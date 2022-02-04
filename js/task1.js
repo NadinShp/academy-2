@@ -27,29 +27,26 @@ console.log(getAlientLanguage('My name is John')) //My NAMe Is JOHn
 // Task4
 function isAutomorphic(n){
     const degree = n*n;
-    const arrFromDegree = degree.toString().split('');
-    let endOfdegree;
-    switch(n.toString().length){
-        case 1:
-            endOfDegree = arrFromDegree.slice(-1).join('')
-            break;
-        case 2:
-            endOfdegree = arrFromDegree.slice(-2).join('')
-            break;
-        case 3:
-            endOfdegree = arrFromDegree.slice(-3).join('')
-            break;
-        case 4:
-            endOfdegree = arrFromDegree.slice(-4).join('')
-            break;
-        default:
-            endOfdegree = null;
-    }
-    return +endOfdegree === n ? 'Automorphic' : 'Not!!';
+    return degree.toString().endsWith(n) ? 'Automorphic' : 'Not!!';
 }
 console.log(isAutomorphic(25)) //Automorphic
 console.log(isAutomorphic(12)) //Not!!
 
+//Task 5
+Function.prototype.call = function(context, ...args) {
+        return this.apply(context, args);
+};
+
+//Task 6
+Function.prototype.bind = function (context) {
+    const func = this;
+    return function () {
+        if (this && this.prop) {
+            return func.apply(this);
+        }
+        return func.apply(context);
+    };
+};
 //Task7
 function greet(value){
     let name = value;
