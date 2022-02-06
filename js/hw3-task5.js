@@ -1,4 +1,4 @@
-class fotboolTeam {
+class FotboolTeam {
     constructor(){
         this.teamA = this.getStartedTeam();
         this.teamB = this.getStartedTeam();
@@ -35,7 +35,7 @@ class fotboolTeam {
         : [...acc, el], [])
     }
 }
-const footbool = new fotboolTeam();
+const footbool = new FotboolTeam();
 // console.log(footbool.getStillStanding([]));//[11, 11]
 // console.log(footbool.getStillStanding(['A4Y', "A4Y"])); //[10, 11]
 // console.log(footbool.getStillStanding(['A4Y', "A4R"])); //[10, 11]
