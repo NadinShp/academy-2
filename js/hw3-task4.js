@@ -2,7 +2,7 @@ class HalfOfFame {
     constructor(size, players){
         this.size = size || 5;
         this.players = players;
-        this.list = players ? this.getArrRightLength(this.getSortedArr([...players])) : [];
+        this.list = players ? this.getSortedArr([...players]) : [];
     }
     add(player){
         if(this.list.length===0){
@@ -21,36 +21,40 @@ class HalfOfFame {
             }
             return [...acc, el]
     }, []);
-    const resArr = this.getSortedArr(newArrPlayers);
-    this.list = resArr.length>this.size ? resArr.slice(0, this.size) : resArr;
+    this.list = this.getSortedArr(newArrPlayers);
 }
     getList(){
         return(this.list);
     }
     getSortedArr(arr){
-        console.log('arr', arr);
-        return arr.sort().map(el=>{
+        const newArr = arr.sort().map(el=>{
             const gamer = el.split(': ');
             return ({name: gamer[0], score: gamer[1]})
         })
         .sort((a, b)=>b.score-a.score)
         .map(el=>`${el.name}: ${el.score}`);
-    }
-    getArrRightLength(arr){
-        console.log('this.size', this.size);
-        return (arr.length>this.size ? arr.slice(0, this.size) : arr);
+        return (newArr.length>this.size ? newArr.slice(0, this.size) : newArr);
     }
 }
 const playes1 = new HalfOfFame(3, ['Ann: 42', 'Man: 21', 'Albert: 88']);
+console.log(playes1.list);
 playes1.add(['Gary', 542]);
-console.log(playes1.getList());
+console.log(playes1.list);
 playes1.add(['Ann', 102]);
-console.log(playes1.getList());
+console.log(playes1.list);
 playes1.add(['Den', 15]);
-console.log(playes1.getList());
+console.log(playes1.list);
 
 const playes2 = new HalfOfFame();
 playes2.add(['Den', 15]);
-console.log(playes2.getList());
+console.log(playes2.list);
 playes2.add(['Ann', 102]);
-console.log(playes2.getList());
+console.log(playes2.list);
+playes2.add(['Gary', 542]);
+console.log(playes2.list);
+playes2.add(['Ann', 102]);
+console.log(playes2.list);
+playes2.add(['Kat', 115]);
+console.log(playes2.list);
+playes2.add(['Mary', 175]);
+console.log(playes2.list);
